@@ -37,7 +37,7 @@ const Tasks = () => {
               <h5>Tasks</h5>
             </Tittle>
             <p>Add, edit, complete and elete tasks!</p>
-            
+            <br />
             {tasks.map((task) => (
                 <>
                     <p>{task.title}</p>
