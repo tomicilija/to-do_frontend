@@ -54,13 +54,7 @@ const AddTask: FC<AddTaskProps> = ({ isAddTaskOpen, setIsAddTaskOpen }) => {
       console.log(err)
     }
   }
-
-  useEffect(() => {
-    fetchUsers().catch((e: string) => {
-      console.log('Error: Cant get data. \n' + e)
-    })
-  }, [fetchUsers, users])
-
+  
   return (
     <>
       {isAddTaskOpen ? (
@@ -83,7 +77,7 @@ const AddTask: FC<AddTaskProps> = ({ isAddTaskOpen, setIsAddTaskOpen }) => {
                   <SettingsSection>
                     <Label for='description'>Description</Label>
                     <Input
-                      type='text'
+                      type='textarea'
                       name='description'
                       id='description'
                       required

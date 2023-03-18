@@ -9,6 +9,7 @@ export const Container = styled.div`
   background: #ffffff;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
+  word-break: break-all;
 
   margin-left: 20px;
   margin-bottom: 20px;
@@ -17,12 +18,18 @@ export const Container = styled.div`
   width: 320px;
   min-height: 115px;
 
+  &.todo {
+    color: rgb(0, 0, 0);
+  }
+  &.complete {
+    color: rgba(0, 0, 0, 0.3);
+  }
+
   @media (max-width: 900px) {
     max-width: 300px;
     min-height: 120px;
     border-radius: 16px;
     margin-left: 0px;
-    word-break: break-all;
   }
 
   @media (max-width: 370px) {
@@ -68,8 +75,6 @@ export const TaskTitle = styled.div`
   font-size: 18px;
   line-height: 19px;
 
-  color: #000000;
-
   @media (max-width: 900px) {
     max-width: 255px;
     min-height: 20px;
@@ -86,8 +91,6 @@ export const TaskDescription = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-
-  color: #000000;
 
   @media (max-width: 900px) {
     max-width: 255px;
@@ -119,6 +122,28 @@ export const AuthorName = styled.div`
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0.4px;
+`
 
-  color: #000000;
+export const Button = styled.button`
+  position: absolute;
+  right: 0;
+  top: 30px;
+  margin: 10px;
+  height: 25px;
+  width: 25px;
+  border: 0;
+  cursor: pointer;
+  background-color: white;
+
+  @media (max-width: 900px) {
+  }
+`
+
+export const Icon = styled.div`
+  position: relative;
+  background: no-repeat;
+  background-size: cover;
+  display: flex;
+  width: 25px;
+  height: 25px;
 `

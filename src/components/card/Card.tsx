@@ -1,15 +1,22 @@
 import React from 'react'
 import { useEffect, useState, useCallback } from 'react'
-import { Container, TaskTitle, Task, TaskAuthor, TaskDescription, AuthorName } from './Card.style'
+import {
+  Container,
+  TaskTitle,
+  Task,
+  TaskAuthor,
+  TaskDescription,
+  AuthorName,
+  Button,
+  Icon,
+} from './Card.style'
 import { CardProps, UsersI } from '../../interfaces/TaskInterfaces'
-import { getUserById, setTaskCompleted } from '../../api/TaskApi'
+import { deleteTask, getUserById, setTaskCompleted } from '../../api/TaskApi'
 import { Input } from 'reactstrap'
-
-// Recives user and quote data, displays it, and handles quote voting
 
 const Card: React.FC<CardProps> = ({ task }) => {
   const [user, setUser] = useState<UsersI>()
-  const [complete, setComplete] = useState<boolean>(false)
+  const [complete, setComplete] = useState<boolean>(task.status)
 
   const fetchUser = useCallback(async () => {
     setUser(await getUserById(task.userId))
@@ -20,23 +27,40 @@ const Card: React.FC<CardProps> = ({ task }) => {
     setComplete(completedTask.status)
   }
 
+  const handleDelete = async () => {
+    await deleteTask(task.id).catch((err) => {
+      console.log('Error: Cant delete task. \n' + err)
+    })
+  }
+
   useEffect(() => {
-    setComplete(task.status)
     fetchUser().catch((e: string) => {
       console.log('Error: Cant get data. \n' + e)
     })
   }, [])
 
   return (
-    <Container>
+    <Container className={complete ? 'complete' : 'todo'}>
       <Task>
         <TaskTitle>{task.title}</TaskTitle>
         <TaskDescription>{task.description}</TaskDescription>
         <TaskAuthor>
           <AuthorName>{user?.name}</AuthorName>
         </TaskAuthor>
-        <Input onClick={handleComplete} type='checkbox' className='task-complete' />
-        <p>{complete.toString()}</p>
+        <Input
+          onChange={handleComplete}
+          type='checkbox'
+          defaultChecked={complete}
+          className='task-complete'
+        />
+        <Button onClick={handleDelete}>
+          <Icon
+            style={{
+              backgroundImage:
+                'url(' + 'https://www.svgrepo.com/show/21045/delete-button.svg' + ')',
+            }}
+          />
+        </Button>
       </Task>
     </Container>
   )

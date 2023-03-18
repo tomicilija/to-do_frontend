@@ -22,7 +22,7 @@ const Tasks = () => {
 
   const fetchTasks = useCallback(async () => {
     setTasks(await getUserTasks(JSON.parse(localStorage.getItem('userId')!)))
-  }, [])
+  }, [tasks])
   
   useEffect(() => {
     fetchTasks().catch((e: string) => {
@@ -37,8 +37,7 @@ const Tasks = () => {
             <Tittle>
               <h5>Tasks</h5>
             </Tittle>
-            <p>Add, edit, complete and elete tasks!</p>
-            <br />
+            <p>Add, edit, complete and delete tasks!</p>
             <CardGrid tasks={tasks}/>
           </BestGuesses>
         </Wrapper>

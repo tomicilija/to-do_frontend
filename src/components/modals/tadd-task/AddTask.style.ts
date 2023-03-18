@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 //Backgorund
 export const Container = styled.div`
@@ -17,7 +17,7 @@ export const Container = styled.div`
     width: 110%;
     margin-left: -13%;
   }
-`;
+`
 
 export const Wrapper = styled.div`
   position: relative;
@@ -56,7 +56,7 @@ export const Wrapper = styled.div`
     max-width: auto;
     margin: 85 vh 0 0 -20px;
   }
-`;
+`
 
 export const ConfirmationWrapper = styled.div`
   position: relative;
@@ -90,7 +90,7 @@ export const ConfirmationWrapper = styled.div`
       font-size: 24px;
     }
   }
-`;
+`
 
 export const SettingsHeader = styled.div`
   position: relative;
@@ -106,7 +106,7 @@ export const SettingsHeader = styled.div`
   h5 {
     color: #ff7d26;
   }
-`;
+`
 
 export const SettingsForm = styled.div`
   position: relative;
@@ -117,7 +117,7 @@ export const SettingsForm = styled.div`
   justify-content: center;
   align-items: center;
   gap: 16px;
-`;
+`
 
 export const SettingsSection = styled.div`
   position: relative;
@@ -137,7 +137,7 @@ export const SettingsSection = styled.div`
     padding: 0px 8px 0px 0px;
     gap: 10px;
 
-    font-family: "Roboto";
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -158,7 +158,7 @@ export const SettingsSection = styled.div`
     outline: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.42);
 
-    font-family: "Roboto";
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -167,6 +167,11 @@ export const SettingsSection = styled.div`
     :focus {
       border-bottom: 2px solid #000000;
     }
+  }
+  textarea {
+    width: 100%;
+    height: 200px;
+    white-space: pre-line;
   }
   button {
     display: flex;
@@ -196,7 +201,7 @@ export const SettingsSection = styled.div`
       }
     }
   }
-`;
+`
 
 export const TwoInRow = styled.div`
   position: relative;
@@ -219,7 +224,7 @@ export const TwoInRow = styled.div`
   @media (max-width: 900px) {
     justify-content: space-between;
   }
-`;
+`
 
 export const ChangeSetings = styled.div`
   position: relative;
@@ -246,7 +251,7 @@ export const ChangeSetings = styled.div`
     flex-direction: column;
     gap: 8px;
   }
-`;
+`
 
 export const UploadImage = styled.div`
   position: relative;
@@ -260,7 +265,7 @@ export const UploadImage = styled.div`
   @media (max-width: 900px) {
     padding: 0;
   }
-`;
+`
 
 export const Image = styled.div`
   position: relative;
@@ -278,7 +283,7 @@ export const Image = styled.div`
   }
   @media (max-width: 900px) {
   }
-`;
+`
 
 export const Buttons = styled.div`
   position: relative;
@@ -291,7 +296,7 @@ export const Buttons = styled.div`
   gap: 20px;
   @media (max-width: 900px) {
   }
-`;
+`
 
 export const Peek = styled.button`
   position: absolute;
@@ -305,7 +310,7 @@ export const Peek = styled.button`
 
   @media (max-width: 900px) {
   }
-`;
+`
 
 export const PeekImg = styled.div`
   position: relative;
@@ -320,7 +325,7 @@ export const PeekImg = styled.div`
   &.hidden {
     opacity: 30%;
   }
-`;
+`
 
 export const Button = styled.button`
   display: flex;
@@ -339,7 +344,7 @@ export const Button = styled.button`
   }
   @media (max-width: 900px) {
   }
-`;
+`
 
 export const Warning = styled.div`
   color: #ff7d26;
@@ -350,4 +355,4 @@ export const Warning = styled.div`
 
   @media (max-width: 900px) {
   }
-`;
+`

@@ -56,11 +56,11 @@ const Navbar = () => {
             </div>
             <div onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}>
               <MobileLink onClick={openAddTaskModal}>
-                <h5>Tasks</h5>
+                <h5>Tasks +</h5>
               </MobileLink>
             </div>
             <DesktopLink onClick={openAddTaskModal}>
-              <p>Tasks</p>
+              <p>Tasks +</p>
             </DesktopLink>
             <DesktopLink onClick={openUserInfoModal}>
               <p>User</p>

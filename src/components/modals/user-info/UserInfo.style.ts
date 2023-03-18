@@ -137,7 +137,7 @@ export const SettingsSection = styled.div`
     padding: 0px 8px 0px 0px;
     gap: 10px;
 
-    font-family: "Roboto";
+    font-family: "Montserrat";
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -158,7 +158,7 @@ export const SettingsSection = styled.div`
     outline: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.42);
 
-    font-family: "Roboto";
+    font-family: "Montserrat";
     font-style: normal;
     font-weight: 700;
     font-size: 14px;

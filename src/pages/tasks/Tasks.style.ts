@@ -69,8 +69,10 @@ export const Tittle = styled.div`
   width: 100%;
   h5 {
     text-align: start;
-    color: #233d4d;
+    color: #619b8a;
+    font-size: 26px;
     margin-bottom: 20px;
+    margin-left: 25px;
   }
   p {
     text-align: start;
@@ -86,7 +88,6 @@ export const Tittle = styled.div`
       font-weight: 400;
       font-size: 24px;
       line-height: 28px;
-      color: #619b8a;
     }
   }
 `
