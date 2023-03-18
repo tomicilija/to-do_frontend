@@ -3,19 +3,18 @@ import styled from 'styled-components'
 //Backgorund
 export const Container = styled.div`
   position: absolute;
-  width: 110%;
-  height: 500%;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  margin-left: -10%;
-
   @media (max-width: 900px) {
-    width: 110%;
-    margin-left: -13%;
   }
 `
 
@@ -23,8 +22,6 @@ export const Wrapper = styled.div`
   position: relative;
   width: 600px;
   min-height: 500px;
-  margin-top: 80vh;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -41,20 +38,16 @@ export const Wrapper = styled.div`
     width: 100%;
     gap: 16px;
   }
+  h3{
+    margin-bottom: 10px;
+  }
 
   @media (max-width: 900px) {
     width: 80%;
     gap: 16px;
     height: auto;
     max-width: auto;
-    margin: 80vh auto 0 auto;
-  }
-
-  @media (max-width: 300px) {
-    width: 90%;
-    height: auto;
-    max-width: auto;
-    margin: 85 vh 0 0 -20px;
+    margin:  auto;
   }
 `
 

@@ -17,12 +17,27 @@ export const Container = styled.div`
   gap: 21px;
   width: 320px;
   min-height: 115px;
-
+  :hover {
+    -ms-transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+  }
   &.todo {
     color: rgb(0, 0, 0);
   }
   &.complete {
     color: rgba(0, 0, 0, 0.3);
+  }
+
+  .task-complete {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px;
+    height: 25px;
+    width: 25px;
+    accent-color: #699f89;
+    cursor: pointer;
   }
 
   @media (max-width: 900px) {
@@ -44,19 +59,9 @@ export const Task = styled.div`
   align-items: flex-start;
   padding: 10px;
   gap: 21px;
+  cursor: grab;
 
   width: 100%;
-
-  .task-complete {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 10px;
-    height: 25px;
-    width: 25px;
-    accent-color: #699f89;
-    cursor: pointer;
-  }
 
   @media (max-width: 900px) {
     max-width: 255px;

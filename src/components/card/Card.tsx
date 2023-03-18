@@ -13,10 +13,17 @@ import {
 import { CardProps, UsersI } from '../../interfaces/TaskInterfaces'
 import { deleteTask, getUserById, setTaskCompleted } from '../../api/TaskApi'
 import { Input } from 'reactstrap'
+import EditTask from '../modals/edit-task/EditTask'
+import { Wrapper } from '../navbar/Navbar.style'
 
 const Card: React.FC<CardProps> = ({ task }) => {
   const [user, setUser] = useState<UsersI>()
   const [complete, setComplete] = useState<boolean>(task.status)
+  const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState<boolean>(false)
+
+  const openAddTaskModal = () => {
+    setIsAddTaskModalOpen((prev) => !prev)
+  }
 
   const fetchUser = useCallback(async () => {
     setUser(await getUserById(task.userId))
@@ -40,13 +47,15 @@ const Card: React.FC<CardProps> = ({ task }) => {
   }, [])
 
   return (
-    <Container className={complete ? 'complete' : 'todo'}>
-      <Task>
-        <TaskTitle>{task.title}</TaskTitle>
-        <TaskDescription>{task.description}</TaskDescription>
-        <TaskAuthor>
-          <AuthorName>{user?.name}</AuthorName>
-        </TaskAuthor>
+    <>
+      <Container className={complete ? 'complete' : 'todo'}>
+        <Task onClick={openAddTaskModal}>
+          <TaskTitle>{task.title}</TaskTitle>
+          <TaskDescription>{task.description}</TaskDescription>
+          <TaskAuthor>
+            <AuthorName>{user?.name}</AuthorName>
+          </TaskAuthor>
+        </Task>
         <Input
           onChange={handleComplete}
           type='checkbox'
@@ -61,8 +70,15 @@ const Card: React.FC<CardProps> = ({ task }) => {
             }}
           />
         </Button>
-      </Task>
-    </Container>
+      </Container>
+      <EditTask
+        isAddTaskOpen={isAddTaskModalOpen}
+        setIsAddTaskOpen={setIsAddTaskModalOpen}
+        taskId={task.id}
+        taskTitle={task.title}
+        taskDesc={task.description}
+      />{' '}
+    </>
   )
 }
 

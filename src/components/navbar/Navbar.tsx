@@ -17,23 +17,21 @@ import {
   Wrapper,
   ProfilePicture,
 } from './Navbar.style'
-import { useLocation, Link } from 'react-router-dom'
-import ProfileSettings from '../modals/user-info/UserInfo'
+import { Link } from 'react-router-dom'
 import UserInfo from '../modals/user-info/UserInfo'
-import AddTask from '../modals/tadd-task/AddTask'
+import AddTask from '../modals/add-task/AddTask'
 
 const Navbar = () => {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState<boolean>(false)
   const [isUserInfoModalOpen, setIsUserInfoModalOpen] = useState<boolean>(false)
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState<boolean>(false)
-  const [image, setImage] = useState<string>()
   const openUserInfoModal = () => {
     setIsUserInfoModalOpen((prev) => !prev)
   }
   const openAddTaskModal = () => {
     setIsAddTaskModalOpen((prev) => !prev)
   }
-  
+
   return (
     <Container>
       <Wrapper>
@@ -51,30 +49,24 @@ const Navbar = () => {
           <ButtonWrapper>
             <div onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}>
               <MobileLink onClick={openUserInfoModal}>
-                <h5>User</h5>
+                <h5>Users</h5>
               </MobileLink>
             </div>
             <div onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}>
               <MobileLink onClick={openAddTaskModal}>
-                <h5>Tasks +</h5>
+                <h5>Add Task</h5>
               </MobileLink>
             </div>
             <DesktopLink onClick={openAddTaskModal}>
-              <p>Tasks +</p>
+              <p>Add Task</p>
             </DesktopLink>
             <DesktopLink onClick={openUserInfoModal}>
-              <p>User</p>
+              <p>Users</p>
             </DesktopLink>
           </ButtonWrapper>
         </Menu>
-        <UserInfo
-          isUserInfoOpen={isUserInfoModalOpen}
-          setIsUserInfoOpen={setIsUserInfoModalOpen}
-        />
-        <AddTask
-          isAddTaskOpen={isAddTaskModalOpen}
-          setIsAddTaskOpen={setIsAddTaskModalOpen}
-        />
+        <UserInfo isUserInfoOpen={isUserInfoModalOpen} setIsUserInfoOpen={setIsUserInfoModalOpen} />
+        <AddTask isAddTaskOpen={isAddTaskModalOpen} setIsAddTaskOpen={setIsAddTaskModalOpen} />
       </Wrapper>
     </Container>
   )

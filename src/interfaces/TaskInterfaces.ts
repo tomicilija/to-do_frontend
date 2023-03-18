@@ -55,3 +55,11 @@ export interface AddTaskProps {
   isAddTaskOpen: boolean
   setIsAddTaskOpen: (isAddTaskOpen: boolean) => void
 }
+
+export interface EditTaskProps {
+  isAddTaskOpen: boolean
+  setIsAddTaskOpen: (isAddTaskOpen: boolean) => void
+  taskId: string
+  taskTitle: string
+  taskDesc: string
+}

@@ -37,7 +37,7 @@ export const LogoText = styled.div`
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
-  filter: blur(2px);
+  filter: blur(1px);
   color: #000000;
   span {
     color: #ffffff;
