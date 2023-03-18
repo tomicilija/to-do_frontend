@@ -16,18 +16,18 @@ export interface TasksI {
   id: string
   title: string
   description: string
-  status: string
+  status: boolean
   createdAt: string
   completedAt?: string
   userId: string
 }
 
 export interface CardProps {
-  tasks: {
+  task: {
     id: string
     title: string
     description: string
-    status: string
+    status: boolean
     createdAt: string
     completedAt?: string
     userId: string
@@ -39,7 +39,7 @@ export interface GridProps {
     id: string
     title: string
     description: string
-    status: string
+    status: boolean
     createdAt: string
     completedAt?: string
     userId: string

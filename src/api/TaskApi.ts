@@ -15,6 +15,11 @@ export const getAllUsers = async (): Promise<UsersI[]> => {
   return response.data;
 };
 
+export const getUserById = async (id: string): Promise<UsersI> => {
+  const response = await axiosInstance.get(`/user/${id}`);
+  return response.data;
+};
+
 
 // API calls related to Tasks
 
@@ -25,5 +30,11 @@ export const addTask = async (task: TaskI, id: string): Promise<string> => {
 
 export const getUserTasks = async (id: string): Promise<TasksI[]> => {
   const response = await axiosInstance.get(`/tasks/${id}`);
+  return response.data;
+};
+
+export const setTaskCompleted = async (
+  id: string) => {
+  const response = await axiosInstance.patch(`/task/completed/${id}`);
   return response.data;
 };

@@ -19,7 +19,7 @@ import {
   PeekImg,
 } from './AddTask.style'
 import { Label, Input } from 'reactstrap'
-import { addTask, getAllUsers, signUp } from '../../../api/UserApi'
+import { addTask, getAllUsers, signUp } from '../../../api/TaskApi'
 import { Link } from 'react-router-dom'
 
 const AddTask: FC<AddTaskProps> = ({ isAddTaskOpen, setIsAddTaskOpen }) => {

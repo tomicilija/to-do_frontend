@@ -19,7 +19,7 @@ import {
   PeekImg,
 } from './UserInfo.style'
 import { Label, Input } from 'reactstrap'
-import { getAllUsers, signUp } from '../../../api/UserApi'
+import { getAllUsers, signUp } from '../../../api/TaskApi'
 import { Link } from 'react-router-dom'
 
 const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {

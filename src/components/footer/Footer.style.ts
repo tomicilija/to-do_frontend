@@ -20,8 +20,8 @@ export const Container = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  align-self: flex-end;
-  align-content: flex-end;
+    align-self: flex-end;
+    align-content: flex-end;
     align-items: center;
     padding: 0 20px;
 
@@ -40,13 +40,13 @@ export const LogoText = styled.div`
   filter: blur(2px);
   color: #000000;
   span {
-    color: #FFFFFF;
+    color: #ffffff;
   }
 
-@media (max-width: 900px) {
-  font-weight: 400;
-  font-size: 20px;
-}
+  @media (max-width: 900px) {
+    font-weight: 400;
+    font-size: 20px;
+  }
 `
 
 export const Rights = styled.div`

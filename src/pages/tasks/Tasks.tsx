@@ -14,7 +14,7 @@ import {
 } from './Tasks.style'
 import { Link } from 'react-router-dom'
 import { TasksI } from '../../interfaces/TaskInterfaces'
-import { getUserTasks } from '../../api/UserApi'
+import { getUserTasks } from '../../api/TaskApi'
 import CardGrid from '../../components/card-grid/CardGrid'
 
 const Tasks = () => {
@@ -40,11 +40,6 @@ const Tasks = () => {
             <p>Add, edit, complete and elete tasks!</p>
             <br />
             <CardGrid tasks={tasks}/>
-            {tasks.map((task) => (
-                <>
-                    <p>{task.title}</p>
-                </>
-              ))}
           </BestGuesses>
         </Wrapper>
     </Container>

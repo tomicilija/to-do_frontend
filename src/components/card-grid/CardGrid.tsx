@@ -9,15 +9,15 @@ const CardGrid: React.FC<GridProps> = ({ tasks }: GridProps) => {
       if (tasks.length < 4) {
         breakpointColumnsObj = {
           default: tasks.length,
-          1440: tasks.length,
-          1110: 2,
-          1000: 1,
+          1480: tasks.length,
+          1140: 2,
+          900: 1,
         };
       } else {
         breakpointColumnsObj = {
           default: 4,
-          1440: 3,
-          1110: 2,
+          1480: 3,
+          1140: 2,
           900: 1,
         };
       }
@@ -30,7 +30,7 @@ const CardGrid: React.FC<GridProps> = ({ tasks }: GridProps) => {
               className="my-masonry-grid"
             >
               {tasks.map((value, index) => (
-                <Card key={index} tasks={value} />
+                <Card key={index} task={value} />
               ))}
             </Masonry>
       </CardWrapper>
