@@ -15,6 +15,7 @@ import {
 import { Link } from 'react-router-dom'
 import { TasksI } from '../../interfaces/TaskInterfaces'
 import { getUserTasks } from '../../api/UserApi'
+import CardGrid from '../../components/card-grid/CardGrid'
 
 const Tasks = () => {
   const [tasks, setTasks] = useState<TasksI[]>([])
@@ -23,12 +24,12 @@ const Tasks = () => {
     setTasks(await getUserTasks(JSON.parse(localStorage.getItem('userId')!)))
   }, [])
   
-
   useEffect(() => {
     fetchTasks().catch((e: string) => {
       console.log('Error: Cant get data. \n' + e)
     })
   }, [fetchTasks, tasks])
+
   return (
     <Container>
         <Wrapper>
@@ -38,6 +39,7 @@ const Tasks = () => {
             </Tittle>
             <p>Add, edit, complete and elete tasks!</p>
             <br />
+            <CardGrid tasks={tasks}/>
             {tasks.map((task) => (
                 <>
                     <p>{task.title}</p>

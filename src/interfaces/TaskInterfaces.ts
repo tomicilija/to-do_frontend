@@ -1,35 +1,57 @@
 export interface UserI {
-  name: string;
+  name: string
 }
 
 export interface UsersI {
-  id: string;
-  name: string;
+  id: string
+  name: string
 }
 
 export interface TaskI {
-  title: string;
-  description: string;
+  title: string
+  description: string
 }
 
 export interface TasksI {
-  id: string;
-  title: string;
-  description: string;
-  status: string;
-  createdAt: string;
-  completedAt?: string;
-  userId: string;
+  id: string
+  title: string
+  description: string
+  status: string
+  createdAt: string
+  completedAt?: string
+  userId: string
+}
+
+export interface CardProps {
+  tasks: {
+    id: string
+    title: string
+    description: string
+    status: string
+    createdAt: string
+    completedAt?: string
+    userId: string
+  }
+}
+
+export interface GridProps {
+  tasks: {
+    id: string
+    title: string
+    description: string
+    status: string
+    createdAt: string
+    completedAt?: string
+    userId: string
+  }[]
 }
 
 export interface UserInfoProps {
-  isUserInfoOpen: boolean;
-  setIsUserInfoOpen: (isUserInfoOpen: boolean) => void;
+  isUserInfoOpen: boolean
+  setIsUserInfoOpen: (isUserInfoOpen: boolean) => void
 }
-
 
 export interface AddTaskProps {
-  isAddTaskOpen: boolean;
-  setIsAddTaskOpen: (isAddTaskOpen: boolean) => void;
+  isAddTaskOpen: boolean
+  setIsAddTaskOpen: (isAddTaskOpen: boolean) => void
 }
-
