@@ -60,7 +60,7 @@ const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
   const handleDelete = async (id: string) => {
     await deleteUser(id).catch((err) => {
       console.log('Error: Cant delete user. \n' + err)
-      alert("Can't delete user!\nUser stil has avtive tasks!")
+      alert("Can't delete the user!\nThe user has active tasks!")
     })
     if (userId === id) {
       console.log("Test Delte")
