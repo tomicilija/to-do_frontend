@@ -32,7 +32,8 @@ export const Container = styled.div`
   p {
     position: absolute;
     right: 50px;
-    top: 10px;
+    top: 8px;
+    font-size: 12px;
     color: rgba(0, 0, 0, 1);
   }
 

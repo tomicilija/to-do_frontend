@@ -59,7 +59,8 @@ const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
 
   const handleDelete = async (id: string) => {
     await deleteUser(id).catch((err) => {
-      console.log('Error: Cant delete task. \n' + err)
+      console.log('Error: Cant delete user. \n' + err)
+      alert("Can't delete user!\nUser stil has avtive tasks!")
     })
     setUpdated(!updated)
   }
@@ -96,7 +97,6 @@ const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
               </Buttons>
             </form>
             Or Select Added User:
-            {userId}
             <Table>
               {users.map((user) => (
                 <>

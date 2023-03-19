@@ -8,7 +8,7 @@ import {
   ProfileName,
   NotFound,
   Wrapper,
-  BestGuesses,
+  TaskList,
   Tittle,
   LoadMore,
 } from './Tasks.style'
@@ -23,6 +23,7 @@ const Tasks = () => {
   const { updated, setUpdated } = useContext(UpdateContext)
   const [tasks, setTasks] = useState<TasksI[]>([])
   const [user, setUser] = useState<UsersI>()
+  const test = true
 
   const fetchTasks = useCallback(async () => {
     if (userId) {
@@ -48,15 +49,40 @@ const Tasks = () => {
   return (
     <Container>
       <Wrapper>
-        <BestGuesses>
+        {user ? (
+          <TaskList>
+            <Tittle>
+              <h4>
+                {user?.name}&#39;s <span>Tasks</span>
+              </h4>
+            </Tittle>
+            {tasks.length > 0 ? (
+              <>
+                <p>Add, edit, complete and delete tasks!</p>
+                <CardGrid tasks={tasks} />
+              </>
+            ) : (
+              <>
+                <h5>Selected user does&#39;t have any tasks.</h5>
+                <h6>
+                  You can add tasks in the <span>Add Task</span> menu at the top.
+                </h6>
+              </>
+            )}
+          </TaskList>
+        ) : (
+          <>
           <Tittle>
-            <h5>
-              {user?.name}&#39;s <span>Tasks</span>
-            </h5>
+            <h4>
+              Never forget any <span>Task!</span> Track your tasks with To<span>Do</span> app!
+            </h4>
           </Tittle>
-          <p>Add, edit, complete and delete tasks!</p>
-          <CardGrid tasks={tasks} />
-        </BestGuesses>
+            <h5>User is not selected.</h5>
+            <h6>
+              You can add or select users in the <span>User</span> menu at the top.
+            </h6>
+          </>
+        )}
       </Wrapper>
     </Container>
   )

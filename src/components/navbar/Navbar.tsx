@@ -54,14 +54,14 @@ const Navbar = () => {
             </div>
             <div onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}>
               <MobileLink onClick={openUserInfoModal}>
-                <p>&gt; Users</p>
+                <p>&gt; User</p>
               </MobileLink>
             </div>
             <DesktopLink onClick={openAddTaskModal}>
               <p>Add Task</p>
             </DesktopLink>
             <DesktopLink onClick={openUserInfoModal}>
-              <p>Users</p>
+              <p>User</p>
             </DesktopLink>
           </ButtonWrapper>
         </Menu>

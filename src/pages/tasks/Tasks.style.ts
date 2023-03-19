@@ -31,6 +31,27 @@ export const Wrapper = styled.div`
   padding: 50px;
   margin-top: 120px;
   width: 100%;
+  h5 {
+    width: 100%;
+    margin-top: 20vh;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+  }
+  h6 {
+    width: 100%;
+    margin-top: 20px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    span {
+      color: #619b8a;
+    }
+  }
 
   @media (max-width: 900px) {
     display: flex;
@@ -42,7 +63,7 @@ export const Wrapper = styled.div`
   }
 `
 
-export const BestGuesses = styled.div`
+export const TaskList = styled.div`
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -52,13 +73,13 @@ export const BestGuesses = styled.div`
   width: 100%;
   margin-bottom: 20px;
 
-  h5 {
+  h4 {
     margin-bottom: 50px;
   }
 
   @media (max-width: 900px) {
     margin-bottom: 0;
-    h5 {
+    h4 {
       margin-bottom: 20px;
     }
   }
@@ -67,7 +88,7 @@ export const BestGuesses = styled.div`
 export const Tittle = styled.div`
   position: relative;
   width: 100%;
-  h5 {
+  h4 {
     text-align: start;
     span {
       color: #619b8a;
@@ -84,7 +105,8 @@ export const Tittle = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
-    h5 {
+    h4 {
+      margin-left: 10px;
       font-family: 'Montserrat';
       font-style: normal;
       font-weight: 400;
