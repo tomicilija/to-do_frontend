@@ -34,6 +34,9 @@ const AddTask: FC<AddTaskProps> = ({ isAddTaskOpen, setIsAddTaskOpen }) => {
         setIsAddTaskOpen(false)
         setUpdated(!updated)
       }
+      else{
+        alert("The user is not selected!\nYou must select user before adding tasks!")
+      }
     } catch (err) {
       console.log(err)
     }

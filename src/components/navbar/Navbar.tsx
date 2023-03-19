@@ -14,6 +14,7 @@ import UserInfo from '../modals/user-info/UserInfo'
 import AddTask from '../modals/add-task/AddTask'
 
 const Navbar = () => {
+  const userId = localStorage.getItem('userId')
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState<boolean>(false)
   const [isUserInfoModalOpen, setIsUserInfoModalOpen] = useState<boolean>(false)
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState<boolean>(false)
@@ -39,19 +40,23 @@ const Navbar = () => {
         </BurgerMenu>
         <Menu className={isBurgerMenuOpen ? 'showMenuNav' : 'hideMenuNav'}>
           <ButtonWrapper>
-            <div onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}>
-              <MobileLink onClick={openAddTaskModal}>
-                <p>&gt; Add Task</p>
-              </MobileLink>
-            </div>
+            {userId ? (
+              <>
+                <div onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}>
+                  <MobileLink onClick={openAddTaskModal}>
+                    <p>&gt; Add Task</p>
+                  </MobileLink>
+                </div>
+                <DesktopLink onClick={openAddTaskModal}>
+                  <p>Add Task</p>
+                </DesktopLink>
+              </>
+            ) : null}
             <div onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}>
               <MobileLink onClick={openUserInfoModal}>
                 <p>&gt; User</p>
               </MobileLink>
             </div>
-            <DesktopLink onClick={openAddTaskModal}>
-              <p>Add Task</p>
-            </DesktopLink>
             <DesktopLink onClick={openUserInfoModal}>
               <p>User</p>
             </DesktopLink>

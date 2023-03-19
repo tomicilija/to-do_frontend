@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { TaskI, TasksI, UserI, UsersI } from '../interfaces/TaskInterfaces'
 
-const axiosInstance = axios.create({ baseURL: "http://localhost:5050/" /* process.env.REACT_APP_API_URL */ })
+const axiosInstance = axios.create({ baseURL: "http://localhost:5000/" /* process.env.REACT_APP_API_URL */ })
 
 // API calls related to User
 
