@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 //Backgorund
 export const Container = styled.div`
@@ -17,12 +17,12 @@ export const Container = styled.div`
     width: 110%;
     margin-left: -13%;
   }
-`;
+`
 
 export const Wrapper = styled.div`
   position: relative;
-  width: 600px;
-  min-height: 500px;
+  width: 400px;
+  min-height: 300px;
   margin-top: 80vh;
 
   display: flex;
@@ -36,6 +36,9 @@ export const Wrapper = styled.div`
 
   z-index: 10;
   border-radius: 4px;
+  h3 {
+    margin-bottom: 25px;
+  }
 
   form {
     width: 100%;
@@ -56,57 +59,7 @@ export const Wrapper = styled.div`
     max-width: auto;
     margin: 85 vh 0 0 -20px;
   }
-`;
-
-export const ConfirmationWrapper = styled.div`
-  position: relative;
-  width: 600px;
-  min-height: 200px;
-  margin-top: 80vh;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 32px;
-  gap: 32px;
-
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.2);
-  background: #ffff;
-
-  z-index: 10;
-  border-radius: 4px;
-  button {
-    width: 120px;
-    height: 40px;
-  }
-
-  @media (max-width: 900px) {
-    width: 80%;
-    gap: 16px;
-    height: auto;
-    max-width: auto;
-    h4 {
-      font-weight: 400;
-      font-size: 24px;
-    }
-  }
-`;
-
-export const SettingsHeader = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-
-  text-align: left;
-  width: 100%;
-  gap: 32px;
-  span {
-    color: #619b8a;
-  }
-  h5 {
-    color: #ff7d26;
-  }
-`;
+`
 
 export const SettingsForm = styled.div`
   position: relative;
@@ -117,7 +70,7 @@ export const SettingsForm = styled.div`
   justify-content: center;
   align-items: center;
   gap: 16px;
-`;
+`
 
 export const SettingsSection = styled.div`
   position: relative;
@@ -134,39 +87,44 @@ export const SettingsSection = styled.div`
     width: 100%;
     flex-direction: row;
     align-items: center;
-    padding: 0px 8px 0px 0px;
     gap: 10px;
 
-    font-family: "Montserrat";
+    font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 14px;
-    line-height: 14px;
-    color: #233d4d;
   }
   input {
     display: flex;
     width: 100%;
-    height: 40px;
+    height: 20px;
     flex-direction: row;
     align-items: center;
-    padding: 8px 0 8px 0;
-    gap: 8px;
 
     background: #ffffff;
     border: none;
     outline: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.42);
 
-    font-family: "Montserrat";
+    font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 14px;
     line-height: 14px;
-    color: #322d38;
+    padding: 5px;
     :focus {
       border-bottom: 2px solid #000000;
     }
+  }
+  textarea {
+    width: 100%;
+    height: 150px;
+    padding: 5px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 14px;
   }
   button {
     display: flex;
@@ -196,89 +154,7 @@ export const SettingsSection = styled.div`
       }
     }
   }
-`;
-
-export const TwoInRow = styled.div`
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-content: center;
-  align-items: center;
-  gap: 16px;
-  button {
-    padding: 12px 16px;
-    width: 120px;
-  }
-  p {
-    padding: 12px;
-    margin: 0;
-  }
-
-  @media (max-width: 900px) {
-    justify-content: space-between;
-  }
-`;
-
-export const ChangeSetings = styled.div`
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-content: center;
-  align-items: center;
-  padding: 0px;
-  gap: 16px;
-  margin: 20px 0 20px 0;
-  button {
-    letter-spacing: 0.6px;
-    padding: 12px 16px;
-    width: 100%;
-    text-transform: capitalize;
-    :nth-child(1) {
-      background: #233d4d;
-    }
-  }
-
-  @media (max-width: 900px) {
-    flex-direction: column;
-    gap: 8px;
-  }
-`;
-
-export const UploadImage = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  gap: 30px;
-  width: 100%;
-  @media (max-width: 900px) {
-    padding: 0;
-  }
-`;
-
-export const Image = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 130px;
-  height: 130px;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 64px;
-  }
-  @media (max-width: 900px) {
-  }
-`;
+`
 
 export const Buttons = styled.div`
   position: relative;
@@ -288,39 +164,11 @@ export const Buttons = styled.div`
   align-items: flex-end;
   align-self: flex-end;
   width: 100%;
+  margin: 20px 0;
   gap: 20px;
   @media (max-width: 900px) {
   }
-`;
-
-export const Peek = styled.button`
-  position: absolute;
-  justify-content: flex-end !important;
-  align-self: flex-end !important;
-  margin-top: 20px;
-  width: 25% !important;
-  height: 25px;
-  background-color: transparent;
-  cursor: default;
-
-  @media (max-width: 900px) {
-  }
-`;
-
-export const PeekImg = styled.div`
-  position: relative;
-  background: no-repeat;
-  width: 23px;
-  height: 16px;
-  cursor: pointer;
-
-  &.seen {
-    opacity: 100%;
-  }
-  &.hidden {
-    opacity: 30%;
-  }
-`;
+`
 
 export const Button = styled.button`
   display: flex;
@@ -330,24 +178,94 @@ export const Button = styled.button`
   align-self: flex-start;
 
   padding: 8px 16px;
-  width: 100%;
+  width: auto;
   height: 40px;
   cursor: pointer;
+  border-width: 1px;
+  border-radius: 5px;
+  background-color: #fff;
+  :nth-child(1) {
+    color: #fff;
+    background-color: #669f89;
+    border: 0;
+  }
 
   :hover {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
   }
   @media (max-width: 900px) {
   }
-`;
+`
+export const Table = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  width: 100%;
+  gap: 8px;
+  max-height: 300px;
+  overflow: scroll;
+  overflow-x: hidden;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #aaa;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  @media (max-width: 900px) {
+  }
+`
 
-export const Warning = styled.div`
-  color: #ff7d26;
-  text-align: center;
-  font-size: 12px;
-  margin-top: -10px;
-  width: 50%;
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  width: 100%;
+  border-bottom: 1px solid #669f89;
+  :hover {
+    box-shadow: 0 10px 5px -5px rgba(0, 0, 0, 0.2);
+  }
 
   @media (max-width: 900px) {
   }
-`;
+`
+
+export const Profile = styled.div`
+  width: 100%;
+  height: 30px;
+  padding-top: 5px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  cursor: pointer;
+`
+
+export const Delete = styled.button`
+  margin: 5px;
+  height: 20px;
+  width: 20px;
+  border: 0;
+  cursor: pointer;
+  background-color: white;
+
+  @media (max-width: 900px) {
+  }
+`
+export const Icon = styled.div`
+  position: relative;
+  background: no-repeat;
+  background-size: cover;
+  display: flex;
+  width: 20px;
+  height: 20px;
+`

@@ -1,23 +1,7 @@
 import React from 'react'
 import { FC, useContext, useEffect, useState, useCallback } from 'react'
 import { AddTaskProps, UserI, UsersI } from '../../../interfaces/TaskInterfaces'
-import {
-  Container,
-  Wrapper,
-  SettingsHeader,
-  SettingsForm,
-  SettingsSection,
-  TwoInRow,
-  ChangeSetings,
-  Image,
-  UploadImage,
-  Buttons,
-  Button,
-  ConfirmationWrapper,
-  Warning,
-  Peek,
-  PeekImg,
-} from './AddTask.style'
+import { Container, Wrapper, SettingsForm, SettingsSection, Buttons, Button } from './AddTask.style'
 import { Label, Input } from 'reactstrap'
 import { addTask, getAllUsers, signUp } from '../../../api/TaskApi'
 import { Link } from 'react-router-dom'
@@ -50,16 +34,16 @@ const AddTask: FC<AddTaskProps> = ({ isAddTaskOpen, setIsAddTaskOpen }) => {
         },
         JSON.parse(localStorage.getItem('userId')!),
       )
+      setIsAddTaskOpen(false)
     } catch (err) {
       console.log(err)
     }
   }
-  
+
   return (
     <>
       {isAddTaskOpen ? (
         <Container>
-          {isAddTaskOpen ? (
             <Wrapper>
               <form onSubmit={handleSubmit}>
                 <h3>Add Task</h3>
@@ -87,11 +71,12 @@ const AddTask: FC<AddTaskProps> = ({ isAddTaskOpen, setIsAddTaskOpen }) => {
                     />
                   </SettingsSection>
                 </SettingsForm>
-                <button type='submit'>Add New Task</button>
-                <button onClick={closeAddTaskModal}>Close</button>
+                <Buttons>
+                  <Button type='submit'>Add New Task</Button>
+                  <Button onClick={closeAddTaskModal}>Close</Button>
+                </Buttons>
               </form>
             </Wrapper>
-          ) : null}
         </Container>
       ) : null}
     </>

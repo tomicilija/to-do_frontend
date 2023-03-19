@@ -48,13 +48,13 @@ const Navbar = () => {
         <Menu className={isBurgerMenuOpen ? 'showMenuNav' : 'hideMenuNav'}>
           <ButtonWrapper>
             <div onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}>
-              <MobileLink onClick={openUserInfoModal}>
-                <h5>Users</h5>
+              <MobileLink onClick={openAddTaskModal}>
+                <p>&gt; Add Task</p>
               </MobileLink>
             </div>
             <div onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}>
-              <MobileLink onClick={openAddTaskModal}>
-                <h5>Add Task</h5>
+              <MobileLink onClick={openUserInfoModal}>
+                <p>&gt; Users</p>
               </MobileLink>
             </div>
             <DesktopLink onClick={openAddTaskModal}>

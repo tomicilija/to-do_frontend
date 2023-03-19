@@ -106,13 +106,6 @@ export const ButtonWrapper = styled.div`
     flex-direction: column;
     gap: 0px;
     width: 100%;
-    p {
-      display: none;
-    }
-    //In mobile signin should be below signup
-    a:nth-child(2) {
-      order: 3;
-    }
   }
 `
 
@@ -322,30 +315,29 @@ export const MobileLink = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-  h5 {
-    white-space: nowrap;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    color: #000000;
-    cursor: pointer;
-  }
+    p {
+      white-space: nowrap;
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      color: #699f89;
+      cursor: pointer;
+    }
   }
 `
 
 export const DesktopLink = styled.div`
   display: flex;
   padding: 0px;
+  cursor: pointer;
   p {
     white-space: nowrap;
     font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 18px;
-    line-height: 19px;
-    color: #000000;
-    cursor: pointer;
+    color: #699f89;
   }
   @media (max-width: 900px) {
     display: none;

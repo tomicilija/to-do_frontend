@@ -57,8 +57,8 @@ export interface AddTaskProps {
 }
 
 export interface EditTaskProps {
-  isAddTaskOpen: boolean
-  setIsAddTaskOpen: (isAddTaskOpen: boolean) => void
+  isEditTaskOpen: boolean
+  setIsEditTaskOpen: (isEditTaskOpen: boolean) => void
   taskId: string
   taskTitle: string
   taskDesc: string

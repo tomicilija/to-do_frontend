@@ -4,23 +4,18 @@ import { UserI, UserInfoProps, UsersI } from '../../../interfaces/TaskInterfaces
 import {
   Container,
   Wrapper,
-  SettingsHeader,
   SettingsForm,
   SettingsSection,
-  TwoInRow,
-  ChangeSetings,
-  Image,
-  UploadImage,
   Buttons,
   Button,
-  ConfirmationWrapper,
-  Warning,
-  Peek,
-  PeekImg,
+  Table,
+  Row,
+  Profile,
+  Icon,
+  Delete,
 } from './UserInfo.style'
 import { Label, Input } from 'reactstrap'
-import { getAllUsers, signUp } from '../../../api/TaskApi'
-import { Link } from 'react-router-dom'
+import { deleteUser, getAllUsers, signUp } from '../../../api/TaskApi'
 
 const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
   const [formData, setFormData] = useState({
@@ -50,6 +45,12 @@ const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
     }
   }
 
+  const handleDelete = async (id: string) => {
+    await deleteUser(id).catch((err) => {
+      console.log('Error: Cant delete task. \n' + err)
+    })
+  }
+
   useEffect(() => {
     fetchUsers().catch((e: string) => {
       console.log('Error: Cant get data. \n' + e)
@@ -60,33 +61,50 @@ const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
     <>
       {isUserInfoOpen ? (
         <Container>
-          {isUserInfoOpen ? (
-            <Wrapper>
-              <form onSubmit={handleSubmit}>
-                <SettingsForm>
-                  <SettingsSection>
-                    <Label for='name'>Name</Label>
-                    <Input
-                      type='text'
-                      name='name'
-                      id='name'
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                    />
-                  </SettingsSection>
-                </SettingsForm>
-                <button type='submit'>Add User</button>
-                <button onClick={closeUserInfoModal}>Close</button>
-              </form>
-              {localStorage.getItem("userId")}
+          <Wrapper>
+            <form onSubmit={handleSubmit}>
+              <h3>Edit Task</h3>
+              <SettingsForm>
+                <SettingsSection>
+                  <Label for='name'>Name</Label>
+                  <Input
+                    type='text'
+                    name='name'
+                    id='name'
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
+                </SettingsSection>
+              </SettingsForm>
+              <Buttons>
+                <Button type='submit'>Add User</Button>
+                <Button onClick={closeUserInfoModal}>Close</Button>
+              </Buttons>
+            </form>
+            Or Select Added User:
+            <Table>
               {users.map((user) => (
                 <>
-                    <p onClick={()=> localStorage.setItem("userId",JSON.stringify(user.id))} >{user.name}</p>
+                  <Row>
+                    <Profile
+                      onClick={() => localStorage.setItem('userId', JSON.stringify(user.id))}
+                    >
+                      {user.name}
+                    </Profile>
+                    <Delete onClick={() => handleDelete(user.id)}>
+                      <Icon
+                        style={{
+                          backgroundImage:
+                            'url(' + 'https://www.svgrepo.com/show/21045/delete-button.svg' + ')',
+                        }}
+                      />
+                    </Delete>
+                  </Row>
                 </>
               ))}
-            </Wrapper>
-          ) : null}
+            </Table>
+          </Wrapper>
         </Container>
       ) : null}
     </>

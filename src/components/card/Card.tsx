@@ -14,15 +14,13 @@ import { CardProps, UsersI } from '../../interfaces/TaskInterfaces'
 import { deleteTask, getUserById, setTaskCompleted } from '../../api/TaskApi'
 import { Input } from 'reactstrap'
 import EditTask from '../modals/edit-task/EditTask'
-import { Wrapper } from '../navbar/Navbar.style'
 
 const Card: React.FC<CardProps> = ({ task }) => {
   const [user, setUser] = useState<UsersI>()
-  const [complete, setComplete] = useState<boolean>(task.status)
-  const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState<boolean>(false)
+  const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState<boolean>(false)
 
-  const openAddTaskModal = () => {
-    setIsAddTaskModalOpen((prev) => !prev)
+  const openEditTaskModal = () => {
+    setIsEditTaskModalOpen((prev) => !prev)
   }
 
   const fetchUser = useCallback(async () => {
@@ -30,8 +28,7 @@ const Card: React.FC<CardProps> = ({ task }) => {
   }, [])
 
   const handleComplete = async () => {
-    const completedTask = await setTaskCompleted(task.id)
-    setComplete(completedTask.status)
+    await setTaskCompleted(task.id)
   }
 
   const handleDelete = async () => {
@@ -48,18 +45,29 @@ const Card: React.FC<CardProps> = ({ task }) => {
 
   return (
     <>
-      <Container className={complete ? 'complete' : 'todo'}>
-        <Task onClick={openAddTaskModal}>
+      <Container className={task.status ? 'complete' : 'todo'}>
+        <Task onClick={openEditTaskModal}>
           <TaskTitle>{task.title}</TaskTitle>
           <TaskDescription>{task.description}</TaskDescription>
           <TaskAuthor>
             <AuthorName>{user?.name}</AuthorName>
           </TaskAuthor>
         </Task>
+
+        {task.completedAt && task.status ? (
+          <p>
+            {Intl.DateTimeFormat('en-GB', {
+              timeStyle: 'short',
+              dateStyle: 'medium',
+            }).format(new Date(task.completedAt))}
+          </p>
+        ) : (
+          <></>
+        )}
         <Input
           onChange={handleComplete}
           type='checkbox'
-          defaultChecked={complete}
+          checked={task.status}
           className='task-complete'
         />
         <Button onClick={handleDelete}>
@@ -72,8 +80,8 @@ const Card: React.FC<CardProps> = ({ task }) => {
         </Button>
       </Container>
       <EditTask
-        isAddTaskOpen={isAddTaskModalOpen}
-        setIsAddTaskOpen={setIsAddTaskModalOpen}
+        isEditTaskOpen={isEditTaskModalOpen}
+        setIsEditTaskOpen={setIsEditTaskModalOpen}
         taskId={task.id}
         taskTitle={task.title}
         taskDesc={task.description}

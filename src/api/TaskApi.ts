@@ -20,6 +20,11 @@ export const getUserById = async (id: string): Promise<UsersI> => {
   return response.data
 }
 
+export const deleteUser = async (id: string): Promise<TasksI> => {
+  const response = await axiosInstance.delete(`/user/${id}`)
+  return response.data
+}
+
 // API calls related to Tasks
 
 export const addTask = async (task: TaskI, id: string): Promise<string> => {
@@ -37,12 +42,12 @@ export const setTaskCompleted = async (id: string): Promise<TasksI> => {
   return response.data
 }
 
-export const deleteTask = async (id: string): Promise<TasksI> => {
-  const response = await axiosInstance.delete(`/task/${id}`)
+export const updateTask = async (task: TaskI, id: string): Promise<TasksI> => {
+  const response = await axiosInstance.patch(`/task/${id}`, task)
   return response.data
 }
 
-export const updateTask = async (task: TaskI, id: string): Promise<TasksI> => {
-  const response = await axiosInstance.patch(`/task/${id}`, task)
+export const deleteTask = async (id: string): Promise<TasksI> => {
+  const response = await axiosInstance.delete(`/task/${id}`)
   return response.data
 }

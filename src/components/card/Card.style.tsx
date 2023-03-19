@@ -29,6 +29,13 @@ export const Container = styled.div`
     color: rgba(0, 0, 0, 0.3);
   }
 
+  p {
+    position: absolute;
+    right: 50px;
+    top: 10px;
+    color: rgba(0, 0, 0, 1);
+  }
+
   .task-complete {
     position: absolute;
     right: 0;
