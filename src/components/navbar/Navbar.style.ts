@@ -109,97 +109,6 @@ export const ButtonWrapper = styled.div`
   }
 `
 
-export const IconWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 16px;
-`
-
-export const BorderlessButton = styled.button`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 40px;
-  margin-right: -30px;
-  background: #ffffff;
-
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
-  color: #000000;
-  text-transform: capitalize;
-
-  cursor: pointer;
-
-  @media (max-width: 900px) {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 16px;
-    width: 100%;
-    height: 40px;
-    margin-top: 10px;
-
-    border: 1px solid #669f89;
-    border-radius: 4px;
-
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    text-transform: uppercase;
-    color: #000000;
-  }
-`
-
-export const Button = styled.button`
-  width: 137px;
-  height: 31px;
-  margin-left: -30px;
-  cursor: pointer;
-
-  @media (max-width: 900px) {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 16px;
-    width: 100%;
-    height: 40px;
-    margin-left: 0px;
-    margin-top: 50px;
-
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-  }
-`
-
-export const Home = styled.div`
-  display: none;
-  padding: 0px;
-
-  h5 {
-    color: #233d4d;
-  }
-  cursor: pointer;
-
-  @media (max-width: 900px) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-`
-
 export const BurgerMenu = styled.div`
   position: absolute;
   display: none;
@@ -242,65 +151,6 @@ export const BurgerMenu = styled.div`
   }
 `
 
-export const AddMobile = styled.div`
-  display: none;
-  @media (max-width: 900px) {
-    width: 50px;
-    display: flex;
-    order: -1;
-
-    &.showButton {
-      display: flex;
-    }
-    &.hideButton {
-      display: none;
-    }
-  }
-  @media (max-width: 370px) {
-    width: 30px;
-  }
-`
-
-export const ButtonLoggedin = styled.button`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 40px;
-  height: 40px;
-
-  background: #ffffff;
-  border-radius: 60px;
-  border: none;
-
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  text-align: center;
-
-  flex: none;
-  cursor: pointer;
-
-  div {
-    height: 140%;
-  }
-
-  @media (max-width: 900px) {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 8px 16px;
-    width: 100%;
-  }
-  @media (max-width: 900px) {
-    display: none;
-  }
-`
 
 export const MobileLink = styled.div`
   display: none;
@@ -341,32 +191,5 @@ export const DesktopLink = styled.div`
   }
   @media (max-width: 900px) {
     display: none;
-  }
-`
-
-export const ProfilePicture = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  width: 40px;
-
-  background: #ffffff;
-  border-radius: 40px;
-  border: none;
-  img {
-    height: 40px;
-    width: 40px;
-    border-radius: 40px;
-    object-fit: cover;
-  }
-  @media (max-width: 900px) {
-    height: 40px;
-    width: 40px !important;
-    img {
-      height: 40px;
-      width: 40px !important;
-    }
   }
 `

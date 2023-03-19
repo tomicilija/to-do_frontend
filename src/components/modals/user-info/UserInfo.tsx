@@ -1,6 +1,5 @@
-import React from 'react'
-import { FC, useContext, useEffect, useState, useCallback } from 'react'
-import { UserI, UserInfoProps, UsersI } from '../../../interfaces/TaskInterfaces'
+import React, { FC, useContext, useEffect, useState, useCallback } from 'react'
+import { UserInfoProps, UsersI } from '../../../interfaces/TaskInterfaces'
 import {
   Container,
   Wrapper,
@@ -19,12 +18,14 @@ import { deleteUser, getAllUsers, signUp } from '../../../api/TaskApi'
 import { UpdateContext } from '../../../utils/UpdateContext'
 
 const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
-  const userId = localStorage.getItem('userId')
   const { updated, setUpdated } = useContext(UpdateContext)
+  const [users, setUsers] = useState<UsersI[]>([])
   const [formData, setFormData] = useState({
     name: '',
   })
-  const [users, setUsers] = useState<UsersI[]>([])
+  const closeUserInfoModal = () => {
+    setIsUserInfoOpen(false)
+  }
 
   const fetchUsers = useCallback(async () => {
     setUsers(await getAllUsers())
@@ -34,9 +35,6 @@ const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const closeUserInfoModal = () => {
-    setIsUserInfoOpen(false)
-  }
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
@@ -96,11 +94,10 @@ const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
                 <Button onClick={closeUserInfoModal}>Close</Button>
               </Buttons>
             </form>
-            Or Select Added User:
+            Select User:
             <Table>
-              {users.map((user) => (
-                <>
-                  <Row>
+              {users.map((user, index) => (
+                  <Row key={index}>
                     <Profile onClick={() => handleClick(user.id)}>{user.name}</Profile>
                     <Delete onClick={() => handleDelete(user.id)}>
                       <Icon
@@ -111,7 +108,6 @@ const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
                       />
                     </Delete>
                   </Row>
-                </>
               ))}
             </Table>
           </Wrapper>

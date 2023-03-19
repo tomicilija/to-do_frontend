@@ -1,21 +1,13 @@
-import React from 'react'
-import { useContext, useEffect, useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import {
   Container,
   Logo,
   Menu,
-  Home,
   ButtonWrapper,
-  Button,
-  ButtonLoggedin,
   MobileLink,
   DesktopLink,
   BurgerMenu,
-  AddMobile,
-  BorderlessButton,
-  IconWrapper,
   Wrapper,
-  ProfilePicture,
 } from './Navbar.style'
 import { Link } from 'react-router-dom'
 import UserInfo from '../modals/user-info/UserInfo'

@@ -1,11 +1,6 @@
-import React from 'react'
-import { FC, useContext, useEffect, useState, useCallback } from 'react'
+import React, { FC, useContext, useState } from 'react'
 import {
-  AddTaskProps,
   EditTaskProps,
-  TasksI,
-  UserI,
-  UsersI,
 } from '../../../interfaces/TaskInterfaces'
 import {
   Container,
@@ -16,8 +11,7 @@ import {
   Button,
 } from './EditTask.style'
 import { Label, Input } from 'reactstrap'
-import { addTask, getAllUsers, signUp, updateTask } from '../../../api/TaskApi'
-import { Link } from 'react-router-dom'
+import { updateTask } from '../../../api/TaskApi'
 import { UpdateContext } from '../../../utils/UpdateContext'
 
 const EditTask: FC<EditTaskProps> = ({
@@ -32,14 +26,14 @@ const EditTask: FC<EditTaskProps> = ({
     title: '',
     description: '',
   })
+  const closeEditTaskModal = () => {
+    setIsEditTaskOpen(false)
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const closeEditTaskModal = () => {
-    setIsEditTaskOpen(false)
-  }
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
@@ -58,6 +52,7 @@ const EditTask: FC<EditTaskProps> = ({
       console.log(err)
     }
   }
+  
   return (
     <>
       {isEditTaskOpen ? (

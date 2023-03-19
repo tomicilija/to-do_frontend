@@ -1,18 +1,10 @@
-import { useState, useEffect, useContext, useCallback } from 'react'
-import React from 'react'
+import React, { useState, useEffect, useContext, useCallback } from 'react'
 import {
   Container,
-  ProfileBanner,
-  ProfilePicture,
-  ProfileInfo,
-  ProfileName,
-  NotFound,
   Wrapper,
   TaskList,
   Tittle,
-  LoadMore,
 } from './Tasks.style'
-import { Link } from 'react-router-dom'
 import { TasksI, UsersI } from '../../interfaces/TaskInterfaces'
 import { getUserById, getUserTasks } from '../../api/TaskApi'
 import CardGrid from '../../components/card-grid/CardGrid'
@@ -23,7 +15,6 @@ const Tasks = () => {
   const { updated, setUpdated } = useContext(UpdateContext)
   const [tasks, setTasks] = useState<TasksI[]>([])
   const [user, setUser] = useState<UsersI>()
-  const test = true
 
   const fetchTasks = useCallback(async () => {
     if (userId) {

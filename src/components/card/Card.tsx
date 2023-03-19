@@ -1,5 +1,4 @@
-import React from 'react'
-import { useEffect, useState, useCallback, useContext } from 'react'
+import React, { useEffect, useState, useCallback, useContext } from 'react'
 import {
   Container,
   TaskTitle,
@@ -58,6 +57,7 @@ const Card: React.FC<CardProps> = ({ task }) => {
   return (
     <>
       <Container className={task.status ? 'complete' : 'todo'}>
+
         <Task onClick={openEditTaskModal}>
           <TaskTitle>{task.title}</TaskTitle>
           <TaskDescription>{task.description}</TaskDescription>
@@ -76,6 +76,7 @@ const Card: React.FC<CardProps> = ({ task }) => {
         ) : (
           <></>
         )}
+
         <Input
           onChange={handleComplete}
           type='checkbox'
@@ -90,6 +91,7 @@ const Card: React.FC<CardProps> = ({ task }) => {
             }}
           />
         </Button>
+
       </Container>
       <EditTask
         isEditTaskOpen={isEditTaskModalOpen}
@@ -97,7 +99,7 @@ const Card: React.FC<CardProps> = ({ task }) => {
         taskId={task.id}
         taskTitle={task.title}
         taskDesc={task.description}
-      />{' '}
+      />
     </>
   )
 }

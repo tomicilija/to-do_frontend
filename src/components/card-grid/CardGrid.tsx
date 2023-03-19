@@ -3,7 +3,6 @@ import { CardWrapper, NotFound } from './CardGrid.style'
 import Masonry from 'react-masonry-css'
 import { GridProps } from '../../interfaces/TaskInterfaces'
 import Card from '../card/Card'
-import { useEffect } from 'react'
 
 const CardGrid: React.FC<GridProps> = ({ tasks }: GridProps) => {
   let breakpointColumnsObj
@@ -36,7 +35,7 @@ const CardGrid: React.FC<GridProps> = ({ tasks }: GridProps) => {
   } else {
     return (
       <NotFound>
-        <h1>OOPS!</h1> <p>This is looking a little empty</p>
+        <h3>OOPS!</h3> <p>This is looking a little empty</p>
       </NotFound>
     )
   }

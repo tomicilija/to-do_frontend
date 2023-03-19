@@ -1,10 +1,8 @@
-import React from 'react'
-import { FC, useContext, useEffect, useState, useCallback } from 'react'
-import { AddTaskProps, UserI, UsersI } from '../../../interfaces/TaskInterfaces'
+import React, { FC, useContext, useState } from 'react'
+import { AddTaskProps } from '../../../interfaces/TaskInterfaces'
 import { Container, Wrapper, SettingsForm, SettingsSection, Buttons, Button } from './AddTask.style'
 import { Label, Input } from 'reactstrap'
-import { addTask, getAllUsers, signUp } from '../../../api/TaskApi'
-import { Link } from 'react-router-dom'
+import { addTask } from '../../../api/TaskApi'
 import { UpdateContext } from '../../../utils/UpdateContext'
 
 const AddTask: FC<AddTaskProps> = ({ isAddTaskOpen, setIsAddTaskOpen }) => {
@@ -14,14 +12,14 @@ const AddTask: FC<AddTaskProps> = ({ isAddTaskOpen, setIsAddTaskOpen }) => {
     title: '',
     description: '',
   })
+  const closeAddTaskModal = () => {
+    setIsAddTaskOpen(false)
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const closeAddTaskModal = () => {
-    setIsAddTaskOpen(false)
-  }
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
