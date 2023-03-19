@@ -18,6 +18,7 @@ import { deleteUser, getAllUsers, signUp } from '../../../api/TaskApi'
 import { UpdateContext } from '../../../utils/UpdateContext'
 
 const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
+  const userId = localStorage.getItem('userId')
   const { updated, setUpdated } = useContext(UpdateContext)
   const [users, setUsers] = useState<UsersI[]>([])
   const [formData, setFormData] = useState({
@@ -25,6 +26,7 @@ const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
   })
   const closeUserInfoModal = () => {
     setIsUserInfoOpen(false)
+    setUpdated(!updated)
   }
 
   const fetchUsers = useCallback(async () => {
@@ -60,6 +62,10 @@ const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
       console.log('Error: Cant delete user. \n' + err)
       alert("Can't delete user!\nUser stil has avtive tasks!")
     })
+    if (userId === id) {
+      console.log("Test Delte")
+      localStorage.clear()
+    }
     setUpdated(!updated)
   }
 
@@ -97,17 +103,17 @@ const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
             Select User:
             <Table>
               {users.map((user, index) => (
-                  <Row key={index}>
-                    <Profile onClick={() => handleClick(user.id)}>{user.name}</Profile>
-                    <Delete onClick={() => handleDelete(user.id)}>
-                      <Icon
-                        style={{
-                          backgroundImage:
-                            'url(' + 'https://www.svgrepo.com/show/21045/delete-button.svg' + ')',
-                        }}
-                      />
-                    </Delete>
-                  </Row>
+                <Row key={index}>
+                  <Profile onClick={() => handleClick(user.id)}>{user.name}</Profile>
+                  <Delete onClick={() => handleDelete(user.id)}>
+                    <Icon
+                      style={{
+                        backgroundImage:
+                          'url(' + 'https://www.svgrepo.com/show/21045/delete-button.svg' + ')',
+                      }}
+                    />
+                  </Delete>
+                </Row>
               ))}
             </Table>
           </Wrapper>
