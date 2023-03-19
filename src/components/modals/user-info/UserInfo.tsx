@@ -16,8 +16,11 @@ import {
 } from './UserInfo.style'
 import { Label, Input } from 'reactstrap'
 import { deleteUser, getAllUsers, signUp } from '../../../api/TaskApi'
+import { UpdateContext } from '../../../utils/UpdateContext'
 
 const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
+  const userId = localStorage.getItem('userId')
+  const { updated, setUpdated } = useContext(UpdateContext)
   const [formData, setFormData] = useState({
     name: '',
   })
@@ -37,25 +40,35 @@ const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
-      await signUp({
-        name: formData.name,
-      })
+      if (formData) {
+        await signUp({
+          name: formData.name,
+        })
+        setUpdated(!updated)
+      }
     } catch (err) {
       console.log(err)
     }
+  }
+
+  const handleClick = async (id: string) => {
+    localStorage.setItem('userId', JSON.stringify(id))
+    setUpdated(!updated)
+    setIsUserInfoOpen(false)
   }
 
   const handleDelete = async (id: string) => {
     await deleteUser(id).catch((err) => {
       console.log('Error: Cant delete task. \n' + err)
     })
+    setUpdated(!updated)
   }
 
   useEffect(() => {
     fetchUsers().catch((e: string) => {
       console.log('Error: Cant get data. \n' + e)
     })
-  }, [fetchUsers, users])
+  }, [updated])
 
   return (
     <>
@@ -83,15 +96,12 @@ const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
               </Buttons>
             </form>
             Or Select Added User:
+            {userId}
             <Table>
               {users.map((user) => (
                 <>
                   <Row>
-                    <Profile
-                      onClick={() => localStorage.setItem('userId', JSON.stringify(user.id))}
-                    >
-                      {user.name}
-                    </Profile>
+                    <Profile onClick={() => handleClick(user.id)}>{user.name}</Profile>
                     <Delete onClick={() => handleDelete(user.id)}>
                       <Icon
                         style={{

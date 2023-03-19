@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useContext } from 'react'
 import {
   Container,
   TaskTitle,
@@ -14,34 +14,46 @@ import { CardProps, UsersI } from '../../interfaces/TaskInterfaces'
 import { deleteTask, getUserById, setTaskCompleted } from '../../api/TaskApi'
 import { Input } from 'reactstrap'
 import EditTask from '../modals/edit-task/EditTask'
+import { UpdateContext } from '../../utils/UpdateContext'
 
 const Card: React.FC<CardProps> = ({ task }) => {
+  const { updated, setUpdated } = useContext(UpdateContext)
   const [user, setUser] = useState<UsersI>()
   const [isEditTaskModalOpen, setIsEditTaskModalOpen] = useState<boolean>(false)
 
   const openEditTaskModal = () => {
     setIsEditTaskModalOpen((prev) => !prev)
+    setUpdated(!updated)
   }
 
   const fetchUser = useCallback(async () => {
-    setUser(await getUserById(task.userId))
-  }, [])
+    if (task) {
+      setUser(await getUserById(task.userId))
+      setUpdated(!updated)
+    }
+  }, [task])
 
   const handleComplete = async () => {
-    await setTaskCompleted(task.id)
+    if (task) {
+      await setTaskCompleted(task.id)
+      setUpdated(!updated)
+    }
   }
 
   const handleDelete = async () => {
-    await deleteTask(task.id).catch((err) => {
-      console.log('Error: Cant delete task. \n' + err)
-    })
+    if (task) {
+      await deleteTask(task.id).catch((err) => {
+        console.log('Error: Cant delete task. \n' + err)
+      })
+      setUpdated(!updated)
+    }
   }
 
   useEffect(() => {
     fetchUser().catch((e: string) => {
       console.log('Error: Cant get data. \n' + e)
     })
-  }, [])
+  }, [updated])
 
   return (
     <>

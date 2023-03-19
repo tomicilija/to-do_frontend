@@ -18,6 +18,7 @@ import {
 import { Label, Input } from 'reactstrap'
 import { addTask, getAllUsers, signUp, updateTask } from '../../../api/TaskApi'
 import { Link } from 'react-router-dom'
+import { UpdateContext } from '../../../utils/UpdateContext'
 
 const EditTask: FC<EditTaskProps> = ({
   isEditTaskOpen,
@@ -26,15 +27,11 @@ const EditTask: FC<EditTaskProps> = ({
   taskTitle,
   taskDesc,
 }) => {
+  const { updated, setUpdated } = useContext(UpdateContext)
   const [formData, setFormData] = useState({
     title: '',
     description: '',
   })
-  const [users, setUsers] = useState<UsersI[]>([])
-
-  const fetchUsers = useCallback(async () => {
-    setUsers(await getAllUsers())
-  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -46,14 +43,17 @@ const EditTask: FC<EditTaskProps> = ({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
-      await updateTask(
-        {
-          title: formData.title,
-          description: formData.description,
-        },
-        taskId,
-      )
-      setIsEditTaskOpen(false)
+      if (taskId) {
+        await updateTask(
+          {
+            title: formData.title,
+            description: formData.description,
+          },
+          taskId,
+        )
+        setIsEditTaskOpen(false)
+        setUpdated(!updated)
+      }
     } catch (err) {
       console.log(err)
     }
@@ -91,10 +91,10 @@ const EditTask: FC<EditTaskProps> = ({
                   />
                 </SettingsSection>
               </SettingsForm>
-                <Buttons>
-                  <Button type='submit'>Edit Task</Button>
-                  <Button onClick={closeEditTaskModal}>Close</Button>
-                </Buttons>
+              <Buttons>
+                <Button type='submit'>Edit Task</Button>
+                <Button onClick={closeEditTaskModal}>Close</Button>
+              </Buttons>
             </form>
           </Wrapper>
         </Container>
