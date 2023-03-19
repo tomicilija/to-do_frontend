@@ -63,7 +63,6 @@ const UserInfo: FC<UserInfoProps> = ({ isUserInfoOpen, setIsUserInfoOpen }) => {
       alert("Can't delete the user!\nThe user has active tasks!")
     })
     if (userId === id) {
-      console.log("Test Delte")
       localStorage.clear()
     }
     setUpdated(!updated)
