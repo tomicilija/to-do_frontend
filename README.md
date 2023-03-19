@@ -1,44 +1,68 @@
-# Getting Started with Create React App
+# TO DO App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Full-stack application for tracking tasks. Front-end is bulit with react. (<a href="https://github.com/tomicilija/to-do_backend" target="blank">Back-end source code</a>) 
 
-## Available Scripts
+## How to run app on local machine
 
-In the project directory, you can run:
+<b>First we need to setup backend application using Docker images:</b>
+<br /> 
+Download Postgres database image
 
-### `npm start`
+```bash
+docker pull ilija17/to-do_backend:db
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Download NodeJs image
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+docker pull ilija17/to-do_backend:apis
+```
 
-### `npm test`
+<br />
+<b>Run Docker containers:</b>
+<br />
+Run Postgres database container
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+docker run --name pg -e POSTGRES_PASSWORD=admin -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=to-do -p 35000:5432 -d ilija17/to-do_backend:db
+```
 
-### `npm run build`
+Run NodeJs container
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+docker run --name api -e DATABASE_URL=postgres://postgres:admin@postgres:5432/to-do -e NODE_ENV=dev -e PORT=5000 --link pg:postgres -p 5050:5000 -d ilija17/to-do_backend:apis
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br />
+<b>Clone and Run client:</b>
 
-### `npm run eject`
+Clone repo
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+git clone https://github.com/tomicilija/to-do_frontend.git
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Move to folder
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+cd .\to-do_frontend\
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Install dependencies
 
+```bash
+npm install
+```
+
+Run the App
+
+```bash
+npm start
+```
+
+
+<br /> <br /> <br />
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
